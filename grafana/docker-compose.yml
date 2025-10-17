@@ -1,0 +1,12 @@
+services:
+  grafana:
+    image: grafana/grafana:12.2
+    container_name: grafana
+    restart: always
+    environment:
+      - GF_SERVER_ROOT_URL=http://grafana.iagorlabs.tech
+      - GF_PLUGINS_PREINSTALL=grafana-clock-panel
+    volumes:
+      - 'grafana_storage:/var/lib/grafana'
+volumes:
+  grafana_storage: {}
