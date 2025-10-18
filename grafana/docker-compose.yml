@@ -1,3 +1,11 @@
+networks:
+ default:
+   name: elastic
+   external: false
+
+volumes:
+  grafana_storage: {}
+
 services:
   grafana:
     image: grafana/grafana:12.2
@@ -8,5 +16,9 @@ services:
       - GF_PLUGINS_PREINSTALL=grafana-clock-panel
     volumes:
       - 'grafana_storage:/var/lib/grafana'
-volumes:
-  grafana_storage: {}
+
+  loki:
+    image: grafana/loki:3.5
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
