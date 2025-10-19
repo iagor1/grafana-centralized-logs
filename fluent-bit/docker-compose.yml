@@ -5,6 +5,7 @@ services:
    image: fluent/fluent-bit:4.0.12
    volumes:
      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+     - ./parsers.conf:/fluent-bit/etc/parsers.conf
      - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
      - "/var/run/docker.sock:/var/run/docker.sock:ro"
    networks:
